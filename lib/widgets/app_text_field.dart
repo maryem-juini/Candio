@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -80,6 +82,9 @@ class AppTextField extends StatefulWidget {
 
   /// Callback when field is tapped
   final VoidCallback? onTap;
+
+  /// Callback when suffix icon is tapped
+  final VoidCallback? onSuffixIconTap;
 
   /// Validation function
   final String? Function(String?)? validator;
@@ -208,6 +213,7 @@ class AppTextField extends StatefulWidget {
     this.onChanged,
     this.onSubmitted,
     this.onTap,
+    this.onSuffixIconTap,
     this.validator,
     this.debounceDuration,
     this.autoScrollIntoView = true,
@@ -499,13 +505,26 @@ class _AppTextFieldState extends State<AppTextField> {
 
     // Custom suffix icon
     if (widget.suffixIcon != null) {
-      return Icon(
-        widget.suffixIcon,
-        color:
-            widget.suffixIconColor ??
-            (isDark ? Colors.grey[400] : Colors.grey[600]),
-        size: widget.suffixIconSize ?? 20,
-      );
+      if (widget.onSuffixIconTap != null) {
+        return IconButton(
+          icon: Icon(
+            widget.suffixIcon,
+            color:
+                widget.suffixIconColor ??
+                (isDark ? Colors.grey[400] : Colors.grey[600]),
+            size: widget.suffixIconSize ?? 20,
+          ),
+          onPressed: widget.onSuffixIconTap,
+        );
+      } else {
+        return Icon(
+          widget.suffixIcon,
+          color:
+              widget.suffixIconColor ??
+              (isDark ? Colors.grey[400] : Colors.grey[600]),
+          size: widget.suffixIconSize ?? 20,
+        );
+      }
     }
 
     return null;
@@ -513,7 +532,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   TextStyle _getTextStyle(ThemeData theme, bool isDark) {
     final baseStyle = AppTheme.body1Medium.copyWith(
-      color: isDark ? Colors.white : Colors.black87,
+      color: AppTheme.onBackgroundColor,
     );
 
     return widget.textStyle?.merge(baseStyle) ?? baseStyle;
@@ -521,7 +540,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   TextStyle _getHintStyle(ThemeData theme, bool isDark) {
     final baseStyle = AppTheme.body1Medium.copyWith(
-      color: isDark ? Colors.grey[400] : Colors.grey[600],
+      color: AppTheme.onBackgroundColor.withOpacity(0.6),
     );
 
     return widget.hintStyle?.merge(baseStyle) ?? baseStyle;
@@ -529,7 +548,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   TextStyle _getLabelStyle(ThemeData theme, bool isDark) {
     final baseStyle = AppTheme.body2Semibold.copyWith(
-      color: isDark ? Colors.white : Colors.black87,
+      color: AppTheme.onBackgroundColor,
     );
 
     return widget.labelStyle?.merge(baseStyle) ?? baseStyle;
@@ -549,7 +568,7 @@ class _AppTextFieldState extends State<AppTextField> {
   }
 
   Color _getFillColor(ThemeData theme, bool isDark) {
-    return widget.fillColor ?? (isDark ? Colors.grey[800]! : Colors.grey[100]!);
+    return widget.fillColor ?? AppTheme.backgroundColor;
   }
 
   Color _getCursorColor(ThemeData theme, bool isDark) {

@@ -1,5 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'custom_text.dart';
+import '../core/theme/app_theme.dart';
 
 /// A custom card widget that can be selected or unselected
 /// Used for gender and country selection in onboarding
@@ -58,14 +61,11 @@ class SelectableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
     // Get effective colors based on selection state
-    final effectiveBackgroundColor = _getBackgroundColor(theme, isDark);
-    final effectiveBorderColor = _getBorderColor(theme, isDark);
-    final effectiveTextColor = _getTextColor(theme, isDark);
-    final effectiveIconColor = _getIconColor(theme, isDark);
+    final effectiveBackgroundColor = _getBackgroundColor();
+    final effectiveBorderColor = _getBorderColor();
+    final effectiveTextColor = _getTextColor();
+    final effectiveIconColor = _getIconColor();
 
     // Get effective dimensions
     final effectiveBorderRadius = borderRadius ?? 12.0;
@@ -88,7 +88,7 @@ class SelectableCard extends StatelessWidget {
               isSelected
                   ? [
                     BoxShadow(
-                      color: (selectedColor ?? theme.colorScheme.primary)
+                      color: (selectedColor ?? AppTheme.primaryColor)
                           .withOpacity(0.2),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
@@ -136,7 +136,7 @@ class SelectableCard extends StatelessWidget {
               const SizedBox(width: 8),
               Icon(
                 Icons.check_circle,
-                color: selectedColor ?? theme.colorScheme.primary,
+                color: selectedColor ?? AppTheme.primaryColor,
                 size: 20,
               ),
             ],
@@ -146,32 +146,32 @@ class SelectableCard extends StatelessWidget {
     );
   }
 
-  Color _getBackgroundColor(ThemeData theme, bool isDark) {
+  Color _getBackgroundColor() {
     if (isSelected) {
       return selectedColor?.withOpacity(0.1) ??
-          theme.colorScheme.primary.withOpacity(0.1);
+          AppTheme.primaryColor.withOpacity(0.1);
     }
-    return isDark ? Colors.grey[800]! : Colors.grey[100]!;
+    return AppTheme.backgroundColor;
   }
 
-  Color _getBorderColor(ThemeData theme, bool isDark) {
+  Color _getBorderColor() {
     if (isSelected) {
-      return selectedBorderColor ?? theme.colorScheme.primary;
+      return selectedBorderColor ?? AppTheme.primaryColor;
     }
-    return isDark ? Colors.grey[600]! : Colors.grey[300]!;
+    return AppTheme.primaryColor.withOpacity(0.3);
   }
 
-  Color _getTextColor(ThemeData theme, bool isDark) {
+  Color _getTextColor() {
     if (isSelected) {
-      return selectedTextColor ?? theme.colorScheme.primary;
+      return selectedTextColor ?? AppTheme.primaryColor;
     }
-    return isDark ? Colors.white : Colors.black87;
+    return AppTheme.onBackgroundColor;
   }
 
-  Color _getIconColor(ThemeData theme, bool isDark) {
+  Color _getIconColor() {
     if (isSelected) {
-      return selectedIconColor ?? theme.colorScheme.primary;
+      return selectedIconColor ?? AppTheme.primaryColor;
     }
-    return isDark ? Colors.grey[400]! : Colors.grey[600]!;
+    return AppTheme.onBackgroundColor.withOpacity(0.6);
   }
 }

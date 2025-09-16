@@ -3,7 +3,7 @@ import '../routes/app_routes.dart';
 
 class WelcomeController extends GetxController {
   void onSignInPressed() {
-    Get.toNamed(AppRoutes.signIn);
+    Get.toNamed(AppRoutes.login);
   }
 
   void onSignUpPressed() {
@@ -11,7 +11,6 @@ class WelcomeController extends GetxController {
   }
 
   void onGoogleSignInPressed() {
-    // TODO: Implement Google Sign In
     Get.snackbar(
       'Coming Soon',
       'Google Sign In will be implemented soon!',
@@ -20,7 +19,6 @@ class WelcomeController extends GetxController {
   }
 
   void onAppleSignInPressed() {
-    // TODO: Implement Apple Sign In
     Get.snackbar(
       'Coming Soon',
       'Apple Sign In will be implemented soon!',

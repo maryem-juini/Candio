@@ -9,9 +9,9 @@ class AppTheme {
   AppTheme._();
 
   // App colors - easily customizable
-  static const Color _primaryColor = Color(0xFFFF00FF);
-  static const Color _secondaryColor = Color(0xFF625B71);
-  static const Color _tertiaryColor = Color(0xFF7D5260);
+  static const Color _primaryColor = Color(0xFF2196F3); // Blue
+  static const Color _secondaryColor = Color(0xFF1976D2); // Darker blue
+  static const Color _tertiaryColor = Color(0xFF0D47A1); // Darkest blue
   static const Color _errorColor = Color(0xFFBA1A1A);
   static const Color _surfaceColor = Color(0xFFFFFBFE);
   static const Color _backgroundColor = Color(0xFFFFFBFE);

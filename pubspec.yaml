@@ -1,5 +1,5 @@
-name: kanz
-description: "A new Flutter project." 
+name: candio
+description: "Gestion des Candidatures - A Flutter application for job application management"
 publish_to: 'none' 
 version: 1.0.0+1
 
@@ -16,6 +16,14 @@ dependencies:
   flutter_svg: ^2.0.9
   shared_preferences: ^2.2.2
   google_fonts: ^6.1.0
+  firebase_core: ^3.15.2
+  firebase_auth: ^5.7.0
+  cloud_firestore: ^5.6.12
+  image_picker: ^1.0.7
+  file_picker: ^10.3.1
+  flutter_dotenv: ^5.1.0
+  speech_to_text: ^7.3.0
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -24,3 +32,10 @@ dev_dependencies:
  
 flutter: 
   uses-material-design: true
+
+  assets:
+    - .env
+    - assets/jpg/onboarding/
+    - assets/jpg/logo/
+    - assets/svg/logo/
+    - assets/svg/onboarding/

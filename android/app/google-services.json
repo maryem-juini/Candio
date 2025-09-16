@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331730435085",
+    "project_id": "candio-b3b48",
+    "storage_bucket": "candio-b3b48.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331730435085:android:329f5cacdd4dd7d0b3a944",
+        "android_client_info": {
+          "package_name": "com.example.kanz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbddGU6tclDagu1uJsDQa-4ydhqPfPd-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

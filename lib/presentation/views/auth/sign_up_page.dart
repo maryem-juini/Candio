@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kanz/core/theme/app_theme.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../widgets/index.dart';
 import '../../controllers/auth_controller.dart';
 

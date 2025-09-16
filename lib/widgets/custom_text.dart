@@ -261,6 +261,7 @@ class CustomText extends StatelessWidget {
       softWrap: softWrap,
       overflow: overflow,
       maxLines: maxLines,
+      // ignore: deprecated_member_use
       textScaleFactor: textScaleFactor,
     );
   }
@@ -268,7 +269,6 @@ class CustomText extends StatelessWidget {
   /// Get the text to display (with translation if enabled)
   String _getDisplayText() {
     if (enableTranslation && translationKey != null) {
-      // TODO: Implement translation logic here
       // For now, return the translation key or fallback to text
       return translationKey!;
     }

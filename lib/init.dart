@@ -7,7 +7,7 @@ import 'core/theme/index.dart';
 class AppInit {
   static Future<void> init() async {
     try {
-      // Initialize Flutter bindings
+      // Initialize Flutter bindings first (required for Firebase)
       WidgetsFlutterBinding.ensureInitialized();
 
       // Initialize initial bindings

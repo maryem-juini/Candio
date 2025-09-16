@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import '../controllers/onboarding_controller.dart';
 
 class OnboardingBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<OnboardingController>(() => OnboardingController());
+    // OnboardingController is already registered globally in InitialBindings
+    // This binding is kept for route-specific dependencies if needed in the future
   }
 }

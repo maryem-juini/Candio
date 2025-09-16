@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../widgets/index.dart';
@@ -29,7 +31,7 @@ class WelcomePage extends GetView<WelcomeController> {
               const SizedBox(height: 24),
 
               CustomText.subtitle(
-                'Welcome to kanz App',
+                'Welcome to Candio',
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
@@ -123,28 +125,6 @@ class WelcomePage extends GetView<WelcomeController> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _SocialLoginButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onPressed;
-
-  const _SocialLoginButton({
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AppButton(
-      label: label,
-      leadingIcon: icon,
-      variant: AppButtonVariant.social,
-      onPressed: onPressed,
     );
   }
 }

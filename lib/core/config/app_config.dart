@@ -6,7 +6,7 @@ class AppConfig {
   // App information - easily customizable
   static const String appName = 'Flutter kanz';
   static const String appVersion = '1.0.0';
-  static const String appDescription = 'A customizable Flutter kanz with GetX';
+  static const String appDescription = 'A customizable Flutter candio with GetX';
 
   // App URLs - customize as needed
   static const String privacyPolicyUrl = 'https://example.com/privacy';
@@ -46,9 +46,10 @@ class AppConfig {
   static const Duration longAnimation = Duration(milliseconds: 500);
 
   // UI constants
-  static const double defaultPadding = 16.0;
-  static const double defaultRadius = 8.0;
-  static const double defaultElevation = 2.0;
+  static const double defaultPadding = 26.0;
+  static const double defaultRadius = 12.0;
+  static const double defaultSmallSizedBox = 14.0;
+  static const double defaultSizedBox = 30.0;
 
   // Network settings
   static const int maxRetries = 3;

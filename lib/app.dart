@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'core/bindings/index.dart';
 import 'core/config/index.dart';
 import 'core/theme/index.dart';
+import 'domain/repositories/index.dart';
 import 'presentation/routes/index.dart';
 
 /// Main app widget with customizable theme and navigation setup
@@ -87,6 +88,32 @@ class AppWidget extends StatelessWidget {
 class _ErrorPage extends StatelessWidget {
   const _ErrorPage();
 
+  void _navigateToMainView() async {
+    try {
+      // Try to get the current user from the auth repository
+      final authRepository = Get.find<AuthRepository>();
+      final currentUser = await authRepository.getCurrentUser();
+
+      if (currentUser != null) {
+        // User is authenticated, navigate to main view based on role
+        if (currentUser.role == 'candidate') {
+          Get.offAllNamed(AppRoutes.candidateMain);
+        } else if (currentUser.role == 'hr') {
+          Get.offAllNamed(AppRoutes.hrMain);
+        } else {
+          // Fallback to auth if role is not recognized
+          Get.offAllNamed(AppRoutes.auth);
+        }
+      } else {
+        // User is not authenticated, go to auth
+        Get.offAllNamed(AppRoutes.auth);
+      }
+    } catch (e) {
+      // If there's an error, default to auth
+      Get.offAllNamed(AppRoutes.auth);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +137,7 @@ class _ErrorPage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () => Get.offAllNamed(AppRoutes.home),
+              onPressed: () => _navigateToMainView(),
               child: const Text('Go Home'),
             ),
           ],
